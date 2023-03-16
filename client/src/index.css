@@ -1,22 +1,31 @@
-/* app theme */
-:root {
-    --theme-white: #fcfcfc;
-    --theme-red: #fd7b67;
-    --theme-light-red: #eea297;
-    --theme-lighter-red: #fce7e4;
-    --theme-dark-green: #01b9bd;
-    --theme-light-green: #96edd8;
-    --theme-ligher-green: #e6f8f8;
-    --theme-dark: #232531;
-    --theme-gray: #6a6666;
-    --theme-light-gray: #c5c5c9;
-    --theme-ligher-gray: #f2f2f3;
-}
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+  
+  /* app theme */
+  :root {
+      --theme-white: #fcfcfc;
+      --theme-red: #fd7b67;
+      --theme-light-red: #eea297;
+      --theme-lighter-red: #fce7e4;
+      --theme-dark-green: #01b9bd;
+      --theme-light-green: #96edd8;
+      --theme-ligher-green: #e6f8f8;
+      --theme-dark: #232531;
+      --theme-gray: #6a6666;
+      --theme-light-gray: #c5c5c9;
+      --theme-ligher-gray: #f2f2f3;
+  }
 
-.text-dark-green{
-    color : var(--theme-dark-green)
-}
+  body,
+  input,
+  textarea,
+  button {
+      font-family: 'Roboto', sans-serif;
+  }
 
+  .text-dark-green {
+      color: var(--theme-dark-green)
+  }
 
-
-
+  .text-white {
+      color: var(--theme-white);
+  }
