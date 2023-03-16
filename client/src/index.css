@@ -1,0 +1,22 @@
+/* app theme */
+:root {
+    --theme-white: #fcfcfc;
+    --theme-red: #fd7b67;
+    --theme-light-red: #eea297;
+    --theme-lighter-red: #fce7e4;
+    --theme-dark-green: #01b9bd;
+    --theme-light-green: #96edd8;
+    --theme-ligher-green: #e6f8f8;
+    --theme-dark: #232531;
+    --theme-gray: #6a6666;
+    --theme-light-gray: #c5c5c9;
+    --theme-ligher-gray: #f2f2f3;
+}
+
+.text-dark-green{
+    color : var(--theme-dark-green)
+}
+
+
+
+
