@@ -2,6 +2,9 @@ import React from 'react';
 import Button from '../buttons/Button';
 import './Navbar.css';
 import { IoSearchSharp } from 'react-icons/io5';
+import NavLink from './nav-link/NavLink';
+import { IoIosNotifications } from 'react-icons/io';
+import { BiListUl } from 'react-icons/bi';
 const Navbar = () => {
   return (
     <div className="navbar">
@@ -9,7 +12,14 @@ const Navbar = () => {
         <h1>FBO</h1>
         <p>Food buero organaization</p>
       </div>
-      <div className="nav-links"></div>
+      <div className="nav-links">
+        <NavLink
+          text="Home"
+          active
+        />
+        <NavLink text="Reniewals" />
+        <NavLink text="About us" />
+      </div>
       <div className="search">
         <input
           type="text"
@@ -17,11 +27,13 @@ const Navbar = () => {
           placeholder="Search..."
         />
         <button className="search-icon">
-
           <IoSearchSharp />
         </button>
       </div>
-      <div className="options"></div>
+      <div className="options">
+        <BiListUl />
+        <IoIosNotifications />
+      </div>
       <div className="user">
         <div className="login-signup">
           <Button

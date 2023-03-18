@@ -1,0 +1,14 @@
+.navlink {
+    color: var(--theme-gray);
+    font-weight: bold; 
+    font-size: 15px;  
+    margin: 0 10px;
+    flex-shrink: 0;
+}
+.navlink:hover{
+    color: var(--theme-light-gray);
+}
+
+.active{
+    color: var(--theme-light-red);
+}

@@ -3,6 +3,7 @@
     align-items: center;
     height: 15vh;
     padding: 0 50px;
+    gap: 50px;
 }
 
 .navbar .logo h1 {
@@ -19,6 +20,8 @@
 .navbar .nav-links {
     flex: 1;
     flex-shrink: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .navbar .search {
@@ -28,6 +31,7 @@
 }
 
 .navbar .search .field {
+    
     border: none;
     background-color: var(--theme-white);
     padding: 13px;
@@ -63,8 +67,15 @@
 
 
 .navbar .options {
-    flex: 1;
+    flex: 1/2;
     flex-shrink: 0;
+    font-size: larger;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: var(--theme-dark);
+    justify-content: center;
+    gap: 20px;
 }
 
 .navbar .user {
