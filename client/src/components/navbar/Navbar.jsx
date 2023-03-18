@@ -31,6 +31,15 @@ const Navbar = () => {
         </button>
       </div>
       <div className="options">
+        <div className="database">
+          <p>Database</p>
+          <p>
+            <span>121.3</span>
+            <span>/</span>
+            <span>512 MB</span>
+          </p>
+        </div>
+
         <BiListUl />
         <IoIosNotifications />
       </div>

@@ -1,9 +1,10 @@
 .navlink {
     color: var(--theme-gray);
     font-weight: bold; 
-    font-size: 15px;  
+    font-size: 14px;  
     margin: 0 10px;
     flex-shrink: 0;
+    transition-duration: 200ms;
 }
 .navlink:hover{
     color: var(--theme-light-gray);

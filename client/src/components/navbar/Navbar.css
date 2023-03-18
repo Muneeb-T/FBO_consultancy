@@ -1,9 +1,15 @@
 .navbar {
     display: flex;
     align-items: center;
-    height: 15vh;
+    height: 12vh;
     padding: 0 50px;
     gap: 50px;
+    position: fixed; 
+    top : 0;
+    width: 100vw;
+    z-index: 1000;
+    box-sizing: border-box;
+    background: var(--theme-white);
 }
 
 .navbar .logo h1 {
@@ -79,7 +85,7 @@
 }
 
 .navbar .user {
-    flex: 1;
+    flex: 1/2;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -90,3 +96,28 @@
     flex-shrink: 0;
     gap: 10px;
 }
+
+
+.navbar .options .database{
+    padding: 5px 10px;
+}
+
+.navbar .options .database p{
+    margin: 0;
+    font-size: small;
+    font-weight: bold;
+    display: flex;
+    gap: 3px;
+}
+
+.navbar .options .database p:nth-child(1){
+    font-size: x-small;
+}
+
+.navbar .options .database p span:nth-child(1){
+    color: var(--theme-dark-green);
+}
+.navbar .options .database p span:nth-child(3){
+    color: var(--theme-red);
+}
+
