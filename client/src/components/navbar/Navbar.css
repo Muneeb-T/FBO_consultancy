@@ -1,0 +1,81 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    height: 15vh;
+    padding: 0 50px;
+}
+
+.navbar .logo h1 {
+    margin: 0;
+    color: var(--theme-gray);
+}
+
+.navbar .logo p {
+    margin: 0;
+    color: var(--theme-dark-green);
+    font-weight: bold;
+}
+
+.navbar .nav-links {
+    flex: 1;
+    flex-shrink: 0;
+}
+
+.navbar .search {
+    flex: 1;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.navbar .search .field {
+    border: none;
+    background-color: var(--theme-white);
+    padding: 13px;
+    padding-right: 20%;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 9999px;
+    color: var(--theme-gray);
+    font-size: 14px;
+    outline: 1px solid var(--theme-light-gray);
+}
+
+.navbar .search .search-icon {
+    position: absolute;
+    right: 3%;
+    height: 100%;
+    top: 55%;
+    transform: translateY(-50%);
+    color: var(--theme-dark-green);
+    font-size: larger;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.navbar .search .field:focus {
+    outline: 2px solid var(--theme-light-gray);
+}
+
+.navbar .search .field::placeholder {
+    font-weight: lighter;
+}
+
+
+.navbar .options {
+    flex: 1;
+    flex-shrink: 0;
+}
+
+.navbar .user {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navbar .user .login-signup {
+    display: flex;
+    flex-shrink: 0;
+    gap: 10px;
+}

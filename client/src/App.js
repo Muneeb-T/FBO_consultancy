@@ -2,9 +2,10 @@ import React from 'react';
 import './App.css';
 import Paper from './components/paper/Paper';
 import { Formik, Form } from 'formik';
-import Field from './components/formik/field/FormField';
+import Field from './components/formik/FormField';
 import Button from './components/buttons/Button';
 import * as Yup from 'yup';
+import Navbar from './components/navbar/Navbar';
 const SampleSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string()
@@ -16,7 +17,7 @@ const SampleSchema = Yup.object().shape({
 const App = () => {
   return (
     <div>
-      <h1 className="text-dark-green">Welcome</h1>
+      <Navbar/>
       <div className="test-components">
         <Paper
           backgroundColor="white"

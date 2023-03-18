@@ -19,7 +19,7 @@ const FormField = ({ name, type, as, placeholder, label, form }) => {
           placeholder={placeholder}
         />
       </div>
-      {error && (
+      {form && error && (
         <div className="error-wrapper">
           <p className="error-text">* {errors?.[name]}</p>
         </div>

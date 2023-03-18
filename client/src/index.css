@@ -15,6 +15,10 @@
       --theme-lighter-gray: #f2f2f3;
   }
 
+  body{
+    margin: 0;
+  }
+
   body,
   input,
   textarea,
