@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '../buttons/Button';
 import './Navbar.css';
 import { IoSearchSharp } from 'react-icons/io5';
@@ -9,8 +9,8 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="logo">
-        <h1>FBO</h1>
-        <p>Food buero organaization</p>
+        <h1>{process.env.REACT_APP_NAME || 'APP'}</h1>
+        <p>{process.env.REACT_APP_FULL_FORM || 'App full form'}</p>
       </div>
       <div className="nav-links">
         <NavLink
