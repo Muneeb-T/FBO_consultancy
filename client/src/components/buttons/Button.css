@@ -30,7 +30,7 @@
 .white-button {
     color: var(--theme-gray);
     background-color: var(--theme-white);
-    border: 2px solid var(--theme-light-gray);
+    border: 1px solid var(--theme-light-gray);
 }
 
 .white-button:hover {
@@ -41,7 +41,7 @@
 .green-text-button {
     color: var(--theme-dark-green);
     background-color: var(--theme-white);
-    border: 2px solid var(--theme-dark-green);
+    border: 1px solid var(--theme-dark-green);
 }
 .green-text-button:hover {
     background-color: var(--theme-lighter-green);
