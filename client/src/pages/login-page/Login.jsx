@@ -47,7 +47,8 @@ const Login = ({ page, open, setOpen }) => {
     setOpen((prev) => !prev);
   };
 
-  const handleSwitchPage = ({ page }) => {
+  const handleSwitchPage = ({ page, reset }) => {
+    reset();
     setOpen((prev) => {
       return { ...prev, page };
     });
@@ -116,22 +117,31 @@ const Login = ({ page, open, setOpen }) => {
                 type="submit"
                 style={{ width: '100%' }}
               />
+
+              <div className="forgot-password">
+                {page == 'login' && <p>Forgot password ?</p>}
+                {page == 'signup' ? (
+                  <p
+                    onClick={() =>
+                      handleSwitchPage({ page: 'login', reset: form.resetForm })
+                    }>
+                    Already have account ?
+                  </p>
+                ) : (
+                  <p
+                    onClick={() =>
+                      handleSwitchPage({
+                        page: 'signup',
+                        reset: form.resetForm,
+                      })
+                    }>
+                    Create new account ?
+                  </p>
+                )}
+              </div>
             </Form>
           )}
         </Formik>
-
-        <div className="forgot-password">
-          {page == 'login' && <p>Forgot password ?</p>}
-          {page == 'signup' ? (
-            <p onClick={() => handleSwitchPage({ page: 'login' })}>
-              Already have account ?
-            </p>
-          ) : (
-            <p onClick={() => handleSwitchPage({ page: 'signup' })}>
-              Create new account ?
-            </p>
-          )}
-        </div>
       </Paper>
     </div>
   );
