@@ -36,7 +36,6 @@
 }
 
 .navbar .search .field {
-    
     border: none;
     background-color: var(--theme-white);
     padding: 13px;
@@ -46,7 +45,13 @@
     border-radius: 9999px;
     color: var(--theme-gray);
     font-size: 14px;
+    color: var(--theme-gray);
     outline: 1px solid var(--theme-light-gray);
+}
+
+.navbar .search .field::placeholder{
+    font-size: small;
+    color: var(--theme-light-gray);
 }
 
 .navbar .search .search-icon {

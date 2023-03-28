@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components/navbar/Navbar';
-import Login from './pages/login-page/Login';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './routes/Routes';
 
 const App = () => {
   return (
-    <div>
-      <Navbar activeId={0}/>
-    </div>
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
   );
 };
 

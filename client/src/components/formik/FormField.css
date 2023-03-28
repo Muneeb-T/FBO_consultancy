@@ -4,21 +4,21 @@
 }
 
 
-.input-label {
+.form-input .input-label {
     font-size: 14px;
     font-weight: 600;
     color: var(--theme-gray);
     margin: 0 0 5px 0;
 }
 
-.field-wrapper {
+.form-input .field-wrapper {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.field {
+.form-input .field-wrapper .field {
     border: none;
     background-color: var(--theme-lighter-gray);
     padding: 18px;
@@ -31,26 +31,26 @@
 
 
 
-.input-outline:focus {
+.form-input .field-wrapper .input-outline:focus {
     outline: 2px solid var(--theme-dark-green);
 }
 
-.input-error-outline:focus {
+.form-input .field-wrapper .input-error-outline:focus {
     outline: 2px solid var(--theme-red);
 }
 
 
-.field::placeholder {
+.form-input .field-wrapper .field::placeholder {
     font-weight: bold;
     color: var(--theme-light-gray);
 }
 
-.error-wrapper {
+.form-input .error-wrapper {
     position: absolute;
     right: 0%;
 }
 
-.error-text {
+.form-input .error-wrapper .error-text {
     color: var(--theme-red);
     font-size: small;
     margin: 2px;
