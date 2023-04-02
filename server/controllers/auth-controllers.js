@@ -59,7 +59,7 @@ const login = async (req, res) => {
 
     const tokenData = { userId: user._id };
 
-    user.accessToken = createToken(tokenData, '15');
+    user.accessToken = createToken(tokenData, '5m');
     user.refreshToken = createToken(tokenData, '30d');
 
     await user.save();

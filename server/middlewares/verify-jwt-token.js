@@ -64,7 +64,7 @@ export default async (req, res, next) => {
           throw error;
         }
       }
-      if (error.message === 'invalid accessToken') {
+      if (error.message === 'invalid signature') {
         return res.status(401).json({
           success: false,
           message: 'Unauthorized access. Invalid token',
