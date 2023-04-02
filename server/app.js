@@ -1,16 +1,24 @@
 //import modules
 import express from 'express';
+import cors from 'cors';
 import { config } from 'dotenv';
+import authRoutes from './routes/auth.js';
+import connectDatabase from './mongodb/connection.js';
 
 //call dotenv config function
 config();
-
 
 //set variables
 const app = express(); // express app
 const PORT = process.env.PORT || 4000; // port number
 const baseApiPath = process.env.BASE_API_PATH || '/api'; //base api path
 const appName = process.env.APP_NAME || 'Default App Name'; //name of application
+const dbName = process.env.DB_NAME || 'FBO'; //name of database
+const mongoUri = process.env.MONGO_URI; //mongodb connection string
+const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+
+//use cross origin
+app.use(cors({ origin: frontendUrl, credentials: true }));
 
 //use application middlewares
 app.use(express.json());
@@ -26,11 +34,34 @@ app.get(baseApiPath, (_, res) => {
 });
 
 //use routes to be done
+app.use(`${baseApiPath}/auth`, authRoutes);
+
+app.use((err, req, res) => {
+  res
+    .status(500)
+    .json({ success: false, message: err.message || 'Internal server error.' });
+});
 
 //listen port
-app.listen(PORT, (err) => {
-  if (err) console.log('Error in server setup');
-  console.log('Server started running');
-  console.log('======================');
-  console.log('PORT : ', PORT);
+app.listen(PORT, async (err) => {
+  if (err) {
+    console.log('Error in server setup');
+    process.exit();
+  }
+  try {
+    await connectDatabase(mongoUri, dbName);
+    console.log('Server started running.');
+    console.log('=======================');
+    console.log('PORT : ', PORT);
+    console.log('\n');
+    console.log('Database connected successfully');
+    console.log('===============================');
+    console.log('URI           : ', mongoUri);
+    console.log('Database name : ', dbName);
+  } catch (error) {
+    console.log('Database connection error.');
+    console.log('==========================');
+    console.log(error);
+    process.exit();
+  }
 });
