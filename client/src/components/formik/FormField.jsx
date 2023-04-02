@@ -2,12 +2,16 @@ import React from 'react';
 import './FormField.css';
 import { Field } from 'formik';
 import classNames from 'classnames';
-const FormField = ({ name, type, as, placeholder, label, form }) => {
+const FormField = ({ name, type, as, placeholder, label, form, labelIcon }) => {
   const { errors, touched } = form;
   const error = errors?.[name] && touched?.[name];
   return (
     <div className="form-input">
-      {label && <p className="input-label">{label}</p>}
+      {label && (
+        <p className="input-label">
+          {labelIcon} {label}
+        </p>
+      )}
       <div className="field-wrapper">
         <Field
           as={as}

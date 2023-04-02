@@ -6,12 +6,14 @@ import NavLink from './nav-link/NavLink';
 import { IoIosNotifications } from 'react-icons/io';
 import { BiListUl } from 'react-icons/bi';
 import Login from '../../pages/login-page/Login';
+import API from '../../api';
 const navLinksData = [
   { id: 0, text: 'Home', isActive: true },
   { id: 1, text: 'Renewals', isActive: false },
   { id: 2, text: 'About us', isActive: false },
 ];
 const Navbar = ({ activeId }) => {
+  const user = JSON.parse(localStorage.getItem('user') || null);
   const [searchQuery, setSearchQuery] = useState('');
   const [openLoginSignup, setOpenLoginSignup] = useState({
     open: false,
@@ -32,6 +34,10 @@ const Navbar = ({ activeId }) => {
     setOpenLoginSignup((prev) => {
       return { open: !prev.open || prev.page !== page, page };
     });
+  };
+
+  const handleLogout = () => {
+    const { data } = API.patch('/auth/logout');
   };
 
   return (
@@ -80,21 +86,34 @@ const Navbar = ({ activeId }) => {
           <IoIosNotifications />
         </div>
         <div className="user">
-          <div className="login-signup">
-            <Button
-              type="button"
-              text="Sign Up"
-              theme="white"
-              onClick={() => handleLoginSignup({ page: 'signup' })}
-            />
-            <Button
-              type="button"
-              text="Login"
-              theme="green"
-              onClick={() => handleLoginSignup({ page: 'login' })}
-            />
-          </div>
-          <div className="user-logged-in"></div>
+          {user ? (
+            <div className="user-logged-in">
+              <p>{user.email}</p>
+              <Button
+                type="button"
+                theme="white"
+                text="Logout"
+                onClick={() => handleLogout()}
+              />
+            </div>
+          ) : (
+            <>
+              <div className="login-signup">
+                <Button
+                  type="button"
+                  text="Sign Up"
+                  theme="white"
+                  onClick={() => handleLoginSignup({ page: 'signup' })}
+                />
+                <Button
+                  type="button"
+                  text="Login"
+                  theme="green"
+                  onClick={() => handleLoginSignup({ page: 'login' })}
+                />
+              </div>
+            </>
+          )}
         </div>
       </div>
       {openLoginSignup.open && (

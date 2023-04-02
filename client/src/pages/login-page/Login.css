@@ -38,6 +38,7 @@
 .login-page .close .close-icon {
     cursor: pointer;
 }
+
 .login-page .close .close-icon:hover {
     transform: scale(0.9);
     transition-duration: 100ms;
@@ -50,7 +51,7 @@
 }
 
 
-.login-page .forgot-password{
+.login-page .forgot-password {
     font-size: small;
     text-decoration: underline;
     color: var(--theme-dark-green);
@@ -61,6 +62,8 @@
     justify-content: center;
 }
 
-.login-page .forgot-password p{
+.login-page .forgot-password p {
     cursor: pointer;
 }
+
+
