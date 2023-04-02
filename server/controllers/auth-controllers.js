@@ -59,7 +59,7 @@ const login = async (req, res) => {
 
     const tokenData = { userId: user._id };
 
-    user.accessToken = createToken(tokenData, '5m');
+    user.accessToken = createToken(tokenData, '15');
     user.refreshToken = createToken(tokenData, '30d');
 
     await user.save();
@@ -85,16 +85,24 @@ const logout = async (req, res) => {
     if (!user) {
       return res
         .status(400)
-        .json({ success: false, message: 'Bad request.user undefined.' });
+        .json({ success: false, message: 'Bad request.User undefined.' });
     }
+    const accessToken = user.accessToken;
+    const refreshToken = user.refreshToken;
 
     user.accessToken = null;
     user.refreshToken = null;
     await user.save();
-    
     res.clearCookie('access-token');
     res.clearCookie('refresh-token');
-    res.status(200).json({ success: false, message: 'Logged out succesfully' });
+    res
+      .status(200)
+      .json({
+        success: false,
+        accessToken,
+        refreshToken,
+        message: 'Logged out succesfully',
+      });
   } catch (error) {
     res.status(500).json({
       success: false,

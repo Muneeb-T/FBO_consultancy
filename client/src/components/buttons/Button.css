@@ -23,6 +23,10 @@
     background-color: var(--theme-dark-green);
 }
 
+.green-button:disabled {
+    background-color: var(--theme-light-green);
+}
+
 .green-button:hover {
     background-color: var(--theme-light-green);
 }
@@ -44,6 +48,7 @@
     background-color: var(--theme-white);
     border: 1px solid var(--theme-dark-green);
 }
+
 .green-text-button:hover {
     background-color: var(--theme-lighter-green);
 }

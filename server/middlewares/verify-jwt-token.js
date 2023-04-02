@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import userModel from '../models/user-model.js';
+import createToken from '../utils/create-token.js';
 
 const validateToken = async (token, type) => {
   const types = ['accessToken', 'refreshToken'];
@@ -13,11 +14,11 @@ const validateToken = async (token, type) => {
   if (!types.includes(type)) {
     throw { message: 'Invalid token type.' };
   }
-  const { _id } = jwt.verify(token, jwtSecret);
-  if (!_id) {
+  const { userId } = jwt.verify(token, jwtSecret);
+  if (!userId) {
     throw { message: 'Id not found inside token.' };
   }
-  const user = await userModel.findById(_id);
+  const user = await userModel.findById(userId);
   if (!user || token !== user[type]) {
     throw { message: 'Unauthorized access' };
   }
@@ -26,7 +27,7 @@ const validateToken = async (token, type) => {
 
 export default async (req, res, next) => {
   try {
-    const accessToken = req.cookies?.['accessToken'];
+    const accessToken = req.cookies?.['access-token'];
     if (!accessToken) {
       return res
         .status(401)
@@ -72,6 +73,7 @@ export default async (req, res, next) => {
       throw error;
     }
   } catch (error) {
+    console.log(error)
     res.status(500).json({
       success: false,
       message: error.message ?? 'Internal server error',

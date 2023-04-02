@@ -40,3 +40,14 @@
   .text-white {
       color: var(--theme-white);
   }
+
+
+  .error-toast{
+      background-color: var(--theme-red);
+      color: var(--theme-white);
+  }
+
+  .success-toast {
+      background-color: var(--theme-dark-green);
+      color: var(--theme-white);
+  }

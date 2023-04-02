@@ -101,6 +101,13 @@
     gap: 10px;
 }
 
+.navbar .user .user-logged-in{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
 
 .navbar .options .database{
     padding: 5px 10px;

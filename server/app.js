@@ -2,8 +2,10 @@
 import express from 'express';
 import cors from 'cors';
 import { config } from 'dotenv';
+import cookieParser from 'cookie-parser'
 import authRoutes from './routes/auth.js';
 import connectDatabase from './mongodb/connection.js';
+
 
 //call dotenv config function
 config();
@@ -21,6 +23,7 @@ const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
 app.use(cors({ origin: frontendUrl, credentials: true }));
 
 //use application middlewares
+app.use(cookieParser())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -36,7 +39,7 @@ app.get(baseApiPath, (_, res) => {
 //use routes to be done
 app.use(`${baseApiPath}/auth`, authRoutes);
 
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   res
     .status(500)
     .json({ success: false, message: err.message || 'Internal server error.' });
