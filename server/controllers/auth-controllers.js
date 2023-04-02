@@ -79,7 +79,29 @@ const login = async (req, res) => {
     });
   }
 };
-const logout = async (req, res) => {};
+const logout = async (req, res) => {
+  try {
+    const { user } = req;
+    if (!user) {
+      return res
+        .status(400)
+        .json({ success: false, message: 'Bad request.user undefined.' });
+    }
+
+    user.accessToken = null;
+    user.refreshToken = null;
+    await user.save();
+    
+    res.clearCookie('access-token');
+    res.clearCookie('refresh-token');
+    res.status(200).json({ success: false, message: 'Logged out succesfully' });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message || 'Internal server error.',
+    });
+  }
+};
 
 export default {
   signup,

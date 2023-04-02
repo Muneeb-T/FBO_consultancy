@@ -14,11 +14,13 @@ const userSchema = new Schema({
   accessToken: {
     type: String,
     unique: true,
+    default: null,
     required: [true, 'Access token is required.'],
   },
   refreshToken: {
     type: String,
     unique: true,
+    default: null,
     required: [true, 'Refresh token is required.'],
   },
 });
