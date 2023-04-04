@@ -1,0 +1,69 @@
+.login-page {
+    width: 100vw;
+    position: absolute;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 9, 0, 0.644);
+    opacity: 0;
+    z-index: 1001;
+}
+
+.login-page .paper {
+    width: 20%;
+    position: relative
+}
+
+.fade-in {
+    transition: opacity 0.2s;
+    opacity: 1;
+}
+
+.login-page .form-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-page .close {
+    margin: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: x-large;
+    color: var(--theme-light-gray);
+}
+
+.login-page .close .close-icon {
+    cursor: pointer;
+}
+
+.login-page .close .close-icon:hover {
+    transform: scale(0.9);
+    transition-duration: 100ms;
+}
+
+.login-page .form-header p {
+    color: var(--theme-dark-green);
+    font-weight: 600;
+    font-size: x-large;
+}
+
+
+.login-page .forgot-password {
+    font-size: small;
+    text-decoration: underline;
+    color: var(--theme-dark-green);
+    padding: 10px 0;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-page .forgot-password p {
+    cursor: pointer;
+}
+
+

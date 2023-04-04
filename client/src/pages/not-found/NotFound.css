@@ -1,0 +1,34 @@
+
+
+.not-found{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    height: 100vh;
+}
+
+.not-found img{
+    width: 40vh;
+}
+
+.not-found .error-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.not-found .error-details .error-code{
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--theme-red);
+}
+
+.not-found .error-details .error-text{
+    color: var(--theme-light-gray);
+    text-align: center;
+    font-size: medium;
+}
+

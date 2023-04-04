@@ -1,0 +1,54 @@
+/* common style  */
+.button {
+    border: none;
+    padding: 12px 30px;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 14px;
+    transition-duration: 80ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.button:hover {
+    scale: 97%;
+}
+
+/* green-button */
+.green-button {
+    color: var(--theme-white);
+    background-color: var(--theme-dark-green);
+}
+
+.green-button:disabled {
+    background-color: var(--theme-light-green);
+}
+
+.green-button:hover {
+    background-color: var(--theme-light-green);
+}
+
+/* white-button */
+.white-button {
+    color: var(--theme-gray);
+    background-color: var(--theme-white);
+    border: 1px solid var(--theme-light-gray);
+}
+
+.white-button:hover {
+    background-color: var(--theme-lighter-gray);
+}
+
+/* green-text-button */
+.green-text-button {
+    color: var(--theme-dark-green);
+    background-color: var(--theme-white);
+    border: 1px solid var(--theme-dark-green);
+}
+
+.green-text-button:hover {
+    background-color: var(--theme-lighter-green);
+}
