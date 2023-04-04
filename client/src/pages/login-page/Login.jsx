@@ -42,7 +42,7 @@ const signUpInitialValues = {
   confirmPassword: '',
 };
 
-const Login = ({ page, open, setOpen }) => {
+const Login = ({ page, open, setOpen, setUser }) => {
   let initialValues, validationSchema;
 
   if (page === 'signup') {
@@ -80,6 +80,7 @@ const Login = ({ page, open, setOpen }) => {
         delete values.confirmPassword;
       }
       const { data } = await API.post(url, values);
+      setUser(data.user);
       localStorage.setItem('user', JSON.stringify(data.user));
       toast.success(data.message, {
         position: 'bottom-center',
@@ -110,13 +111,18 @@ const Login = ({ page, open, setOpen }) => {
         theme: 'colored',
       });
     } finally {
-      setTimeout(() => setLoading(false), 1500);
+      setLoading(false);
     }
   };
 
   return (
     <>
-      {loading && <Loader bgOpacity={10} />}
+      {
+        <Loader
+          bgOpacity={10}
+          loading={loading}
+        />
+      }
       <div
         className={classNames('login-page', {
           'fade-in': fade,

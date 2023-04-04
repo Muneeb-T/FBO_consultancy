@@ -1,7 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 import './Loader.css';
-const Loader = ({ bgOpacity }) => {
+const Loader = ({ bgOpacity, loading }) => {
+  if (!loading) {
+    return null;
+  }
   return (
     <div
       className={classNames('loader', {
