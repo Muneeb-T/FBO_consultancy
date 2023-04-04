@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import userModel from '../models/user-model.js';
 import createToken from '../utils/create-token.js';
 
@@ -24,7 +25,8 @@ const signup = async (req, res) => {
       .status(201)
       .json({ success: true, user, message: 'User signed up successfully.' });
   } catch (error) {
-    if (error?.code === 11000 && error?.keyPattern?.email) {
+    if (error?.code === 11000) {
+      console.log(error);
       return res
         .status(409)
         .json({ success: false, message: 'User already exists.' });
@@ -110,3 +112,5 @@ export default {
   login,
   logout,
 };
+
+

@@ -4,7 +4,7 @@ const { Schema, model } = mongoose;
 const userSchema = new Schema({
   email: {
     type: String,
-    unique: true,
+    unique: [true,'User already exists.'],
     required: [true, 'Email address is required.'],
   },
   password: {
@@ -13,12 +13,10 @@ const userSchema = new Schema({
   },
   accessToken: {
     type: String,
-    unique: true,
     default: null,
   },
   refreshToken: {
     type: String,
-    unique: true,
     default: null,
   },
 });
