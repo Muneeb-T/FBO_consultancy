@@ -49,24 +49,28 @@ app.use((err, req, res, next) => {
 //listen port
 await connectDatabase(mongoUri, dbName);
 
-app.listen(PORT, async (err) => {
-  try {
-    if (err) {
-      console.log('Error in server setup');
+try {
+  app.listen(PORT, async (err) => {
+    try {
+      if (err) {
+        console.log('Error in server setup');
+        process.exit();
+      }
+      console.log('Server started running.');
+      console.log('=======================');
+      console.log('PORT : ', PORT);
+      console.log('\n');
+      console.log('Database connected successfully');
+      console.log('===============================');
+      console.log('URI           : ', mongoUri);
+      console.log('Database name : ', dbName);
+    } catch (error) {
+      console.log('Database connection error.');
+      console.log('==========================');
+      console.log(error);
       process.exit();
     }
-    console.log('Server started running.');
-    console.log('=======================');
-    console.log('PORT : ', PORT);
-    console.log('\n');
-    console.log('Database connected successfully');
-    console.log('===============================');
-    console.log('URI           : ', mongoUri);
-    console.log('Database name : ', dbName);
-  } catch (error) {
-    console.log('Database connection error.');
-    console.log('==========================');
-    console.log(error);
-    process.exit();
-  }
-});
+  });
+} catch (error) {
+  console.log(error);
+}
