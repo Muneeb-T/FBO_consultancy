@@ -76,4 +76,5 @@ try {
   console.log('Server Entry point error');
   console.log('========================');
   console.log(error);
+  process.exit();
 }
