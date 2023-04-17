@@ -7,49 +7,50 @@ import authRoutes from './routes/auth.js';
 import dbRoutes from './routes/database.js';
 import connectDatabase from './mongodb/connection.js';
 
-//call dotenv config function
-config();
-
-//set variables
-const app = express(); // express app
-const PORT = process.env.PORT || 4000; // port number
-const baseApiPath = process.env.BASE_API_PATH || '/api'; //base api path
-const appName = process.env.APP_NAME || 'Default App Name'; //name of application
-const dbName = process.env.DB_NAME || 'FBO'; //name of database
-const mongoUri = process.env.MONGO_URI; //mongodb connection string
-const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
-
-//use cross origin
-app.use(cors({ origin: frontendUrl, credentials: true }));
-
-//use application middlewares
-app.use(cookieParser());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-//handle request to base paths
-app.get('/', (_, res) => {
-  res.send(`Welcome to ${appName}`);
-});
-
-app.get(baseApiPath, (_, res) => {
-  res.send(`This is the base path of apis of ${appName}`);
-});
-
-//use routes to be done
-app.use(`${baseApiPath}/auth`, authRoutes);
-app.use(`${baseApiPath}/database`, dbRoutes);
-
-app.use((err, req, res, next) => {
-  res
-    .status(500)
-    .json({ success: false, message: err.message || 'Internal server error.' });
-});
-
-//listen port
-await connectDatabase(mongoUri, dbName);
-
 try {
+  //call dotenv config function
+  config();
+
+  //set variables
+  const app = express(); // express app
+  const PORT = process.env.PORT || 4000; // port number
+  const baseApiPath = process.env.BASE_API_PATH || '/api'; //base api path
+  const appName = process.env.APP_NAME || 'Default App Name'; //name of application
+  const dbName = process.env.DB_NAME || 'FBO'; //name of database
+  const mongoUri = process.env.MONGO_URI; //mongodb connection string
+  const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+
+  //use cross origin
+  app.use(cors({ origin: frontendUrl, credentials: true }));
+
+  //use application middlewares
+  app.use(cookieParser());
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+
+  //handle request to base paths
+  app.get('/', (_, res) => {
+    res.send(`Welcome to ${appName}`);
+  });
+
+  app.get(baseApiPath, (_, res) => {
+    res.send(`This is the base path of apis of ${appName}`);
+  });
+
+  //use routes to be done
+  app.use(`${baseApiPath}/auth`, authRoutes);
+  app.use(`${baseApiPath}/database`, dbRoutes);
+
+  app.use((err, req, res, next) => {
+    res.status(500).json({
+      success: false,
+      message: err.message || 'Internal server error.',
+    });
+  });
+
+  //listen port
+  await connectDatabase(mongoUri, dbName);
+
   app.listen(PORT, async (err) => {
     try {
       if (err) {
@@ -72,5 +73,7 @@ try {
     }
   });
 } catch (error) {
+  console.log('Server Entry point error');
+  console.log('========================');
   console.log(error);
 }
