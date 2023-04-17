@@ -47,13 +47,14 @@ app.use((err, req, res, next) => {
 });
 
 //listen port
+await connectDatabase(mongoUri, dbName);
+
 app.listen(PORT, async (err) => {
-  if (err) {
-    console.log('Error in server setup');
-    process.exit();
-  }
   try {
-    await connectDatabase(mongoUri, dbName);
+    if (err) {
+      console.log('Error in server setup');
+      process.exit();
+    }
     console.log('Server started running.');
     console.log('=======================');
     console.log('PORT : ', PORT);
