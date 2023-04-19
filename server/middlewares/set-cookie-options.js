@@ -1,15 +1,14 @@
 const setCookieOptions = (req, res, next) => {
   try {
-    const domain = process.env.FRONTEND_URL;
-    const commonOptions = {
-      sameSite: 'none',
-      secure: true,
-      domain,
-    };
-
     const originalCookie = res.cookie;
+
     res.cookie = function (name, value, options) {
-      const newOptions = Object.assign({}, options, commonOptions);
+      const secure =
+        options && options.secure !== undefined ? options.secure : true;
+      const sameSite =
+        options && options.sameSite !== undefined ? options.sameSite : 'none';
+
+      const newOptions = Object.assign({}, options, { sameSite, secure });
       originalCookie.call(this, name, value, newOptions);
     };
 
