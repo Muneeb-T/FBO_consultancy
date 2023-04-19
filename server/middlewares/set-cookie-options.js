@@ -3,6 +3,7 @@ const setCookieOptions = (req, res, next) => {
     const cookieOptions = options || {};
     cookieOptions.sameSite = 'none';
     cookieOptions.secure = true;
+    console.log(cookieOptions)
     res.cookie(name, value, cookieOptions);
   };
   next();
