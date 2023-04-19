@@ -27,6 +27,8 @@ try {
   app.use(cookieParser());
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+  // set cookie options middleware
+  app.use(setCookieOptions);
 
   //handle request to base paths
   app.get('/', (_, res) => {
@@ -40,9 +42,6 @@ try {
   //use routes to be done
   app.use(`${baseApiPath}/auth`, authRoutes);
   app.use(`${baseApiPath}/database`, dbRoutes);
-
-  // set cookie options middleware
-  app.use(setCookieOptions);
 
   app.use((err, req, res, next) => {
     res.status(500).json({
