@@ -50,8 +50,14 @@ export default async (req, res, next) => {
           user.accessToken = createToken(tokenData, '5m');
           user.refreshToken = createToken(tokenData, '30d');
           await user.save();
-          res.cookie('access-token', user.accessToken);
-          res.cookie('refresh-token', user.refreshToken);
+          res.cookie('access-token', user.accessToken, {
+            sameSite: 'none',
+            secure: true,
+          });
+          res.cookie('refresh-token', user.refreshToken, {
+            sameSite: 'none',
+            secure: true,
+          });
           req.user = user;
           return next();
         } catch (error) {
@@ -73,7 +79,7 @@ export default async (req, res, next) => {
       throw error;
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(500).json({
       success: false,
       message: error.message ?? 'Internal server error',

@@ -16,8 +16,14 @@ const signup = async (req, res) => {
 
     await user.save();
 
-    res.cookie('access-token', user.accessToken);
-    res.cookie('refresh-token', user.refreshToken);
+    res.cookie('access-token', user.accessToken, {
+      sameSite: 'none',
+      secure: true,
+    });
+    res.cookie('refresh-token', user.refreshToken, {
+      sameSite: 'none',
+      secure: true,
+    });
 
     user = { _id: user._id, email };
 
@@ -66,8 +72,14 @@ const login = async (req, res) => {
 
     await user.save();
 
-    res.cookie('access-token', user.accessToken);
-    res.cookie('refresh-token', user.refreshToken);
+    res.cookie('access-token', user.accessToken, {
+      sameSite: 'none',
+      secure: true,
+    });
+    res.cookie('refresh-token', user.refreshToken, {
+      sameSite: 'none',
+      secure: true,
+    });
 
     user = { _id: user._id, email };
 
@@ -112,5 +124,3 @@ export default {
   login,
   logout,
 };
-
-
