@@ -51,7 +51,7 @@ try {
   //listen port
   await connectDatabase(mongoUri, dbName);
 
-  app.listen(PORT, async (err) => {
+  app.listen(PORT, (err) => {
     try {
       if (err) {
         console.log('Error in server setup');
