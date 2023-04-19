@@ -1,4 +1,3 @@
-//import modules
 import express from 'express';
 import cors from 'cors';
 import { config } from 'dotenv';
@@ -41,6 +40,8 @@ try {
   //use routes to be done
   app.use(`${baseApiPath}/auth`, authRoutes);
   app.use(`${baseApiPath}/database`, dbRoutes);
+
+  // set cookie options middleware
   app.use(setCookieOptions);
 
   app.use((err, req, res, next) => {
