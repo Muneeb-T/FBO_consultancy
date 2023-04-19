@@ -3,7 +3,7 @@ const setCookieOptions = (req, res, next) => {
     const cookieOptions = options || {};
     cookieOptions.sameSite = none;
     cookieOptions.secure = true;
-    res.cookie(name, value, options);
+    res.cookie(name, value, cookieOptions);
   };
   next();
 };
