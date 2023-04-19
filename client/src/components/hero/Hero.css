@@ -1,0 +1,39 @@
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/food background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+
+.hero .heading {
+    text-align: center;
+}
+
+.hero .heading .title {
+    font-size: 50px;
+    color: var(--theme-white);
+    font-weight: bold;
+    text-shadow: 2px 0px 9px rgba(0,0,0,0.78);
+
+}
+
+.hero .heading .quotes {
+    font-size: medium;
+    font-weight: bold;
+    color: var(--theme-dark-green);
+    text-shadow: 2px 0px 9px rgba(0,0,0,0.78);
+}
+
+
+.hero .links {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

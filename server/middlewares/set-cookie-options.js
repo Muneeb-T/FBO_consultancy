@@ -9,7 +9,6 @@ const setCookieOptions = (req, res, next) => {
       const newOptions = Object.assign({}, options, { sameSite, secure });
       originalCookie.call(this, name, value, newOptions);
     };
-
     next();
   } catch (error) {
     res.status(500).json({
