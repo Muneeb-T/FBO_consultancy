@@ -1,13 +1,11 @@
 const setCookieOptions = (req, res, next) => {
   try {
     const originalCookie = res.cookie;
-
     res.cookie = function (name, value, options) {
-      const secure =
-        options && options.secure !== undefined ? options.secure : true;
-      const sameSite =
-        options && options.sameSite !== undefined ? options.sameSite : 'none';
-
+      let { secure, sameSite, domain } = options;
+      secure = secure || true;
+      sameSite = sameSite || 'none';
+      domain = domain || process.env.FRONTEND_URL;
       const newOptions = Object.assign({}, options, { sameSite, secure });
       originalCookie.call(this, name, value, newOptions);
     };
