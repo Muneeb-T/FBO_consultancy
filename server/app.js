@@ -4,6 +4,7 @@ import { config } from 'dotenv';
 import cookieParser from 'cookie-parser';
 import authRoutes from './routes/auth.js';
 import dbRoutes from './routes/database.js';
+import employeeRoutes from './routes/employee.js';
 import connectDatabase from './mongodb/connection.js';
 import setCookieOptions from './middlewares/set-cookie-options.js';
 
@@ -41,6 +42,7 @@ try {
 
   //use routes to be done
   app.use(`${baseApiPath}/auth`, authRoutes);
+  app.use(`${baseApiPath}/employee`, employeeRoutes);
   app.use(`${baseApiPath}/database`, dbRoutes);
 
   app.use((err, req, res, next) => {

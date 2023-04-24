@@ -17,30 +17,31 @@ const navLinksData = [
   { id: 1, text: 'Renewals', isActive: false },
   { id: 2, text: 'About us', isActive: false },
 ];
+const dbStorageInitialState = {
+  usedStorage: (0).toFixed(2),
+  totalStorage: (0).toFixed(2),
+};
 const Navbar = ({ activeId }) => {
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem('user') || null) || null,
   );
   const [searchQuery, setSearchQuery] = useState('');
-  const [openLoginSignup, setOpenLoginSignup] = useState({
-    open: false,
-    page: '',
-  });
+  const [openLogin, setOpenLogin] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [dataBaseStorage, setDatabaseStorage] = useState({
-    usedStorage: (0).toFixed(2),
-    totalStorage: (0).toFixed(2),
-  });
+  const [dataBaseStorage, setDatabaseStorage] = useState(dbStorageInitialState);
 
   const getDatabaseStorage = async () => {
     try {
-      setLoading(true);
-      const { data } = await API.get('/database/storage');
-      const { success, storage, message } = data;
-      if (!success) {
-        throw { message: message || 'Something went wrong' };
+      if (user) {
+        setLoading(true);
+        const { data } = await API.get('/database/storage');
+        const { success, storage, message } = data;
+        if (!success) {
+          throw { message: message || 'Something went wrong' };
+        }
+        return setDatabaseStorage(storage);
       }
-      setDatabaseStorage(storage);
+      setDatabaseStorage(dbStorageInitialState);
     } catch (error) {
       console.log(error);
       const message =
@@ -65,7 +66,7 @@ const Navbar = ({ activeId }) => {
 
   useEffect(() => {
     getDatabaseStorage();
-  }, []);
+  }, [user]);
 
   const handleSearchQuery = (e) => {
     const { value } = e.target;
@@ -78,10 +79,8 @@ const Navbar = ({ activeId }) => {
     }
   };
 
-  const handleLoginSignup = ({ page }) => {
-    setOpenLoginSignup((prev) => {
-      return { open: !prev.open || prev.page !== page, page };
-    });
+  const handleLogin = () => {
+    setOpenLogin((prev) => !prev);
   };
 
   const handleLogout = async () => {
@@ -94,6 +93,7 @@ const Navbar = ({ activeId }) => {
         throw { message };
       }
       setUser(null);
+
       localStorage.removeItem('user');
 
       toast.success(message, {
@@ -207,30 +207,22 @@ const Navbar = ({ activeId }) => {
             </div>
           ) : (
             <>
-              <div className="login-signup">
-                <Button
-                  type="button"
-                  text="Sign Up"
-                  theme="white"
-                  startIcon={<FaUserPlus />}
-                  onClick={() => handleLoginSignup({ page: 'signup' })}
-                />
+              <div className="login">
                 <Button
                   type="button"
                   text="Login"
                   theme="green"
                   startIcon={<IoLogIn />}
-                  onClick={() => handleLoginSignup({ page: 'login' })}
+                  onClick={handleLogin}
                 />
               </div>
             </>
           )}
         </div>
       </div>
-      {openLoginSignup.open && (
+      {openLogin && (
         <Login
-          page={openLoginSignup.page}
-          setOpen={setOpenLoginSignup}
+          setOpen={setOpenLogin}
           setUser={setUser}
         />
       )}

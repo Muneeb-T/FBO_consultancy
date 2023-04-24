@@ -6,14 +6,7 @@ import verifyJwtToken from '../middlewares/verify-jwt-token.js';
 
 const router = express.Router();
 
-router.post(
-  '/signup',
-  validate(schemas.signup, 'body'),
-  authControllers.signup,
-);
-
 router.post('/login', validate(schemas.login, 'body'), authControllers.login);
-
 router.patch('/logout', verifyJwtToken, authControllers.logout);
 
 export default router;
