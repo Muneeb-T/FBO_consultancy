@@ -94,10 +94,9 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    border-left: 1px solid var(--theme-lighter-gray);
 }
 
-.navbar .user .login-signup {
+.navbar .user .login {
     display: flex;
     flex-shrink: 0;
     gap: 10px;

@@ -22,10 +22,7 @@ const Navbar = ({ activeId }) => {
     JSON.parse(localStorage.getItem('user') || null) || null,
   );
   const [searchQuery, setSearchQuery] = useState('');
-  const [openLoginSignup, setOpenLoginSignup] = useState({
-    open: false,
-    page: '',
-  });
+  const [openLogin, setOpenLogin] = useState(false);
   const [loading, setLoading] = useState(false);
   const [dataBaseStorage, setDatabaseStorage] = useState({
     usedStorage: (0).toFixed(2),
@@ -78,10 +75,8 @@ const Navbar = ({ activeId }) => {
     }
   };
 
-  const handleLoginSignup = ({ page }) => {
-    setOpenLoginSignup((prev) => {
-      return { open: !prev.open || prev.page !== page, page };
-    });
+  const handleLogin = () => {
+    setOpenLogin((prev) => !prev);
   };
 
   const handleLogout = async () => {
@@ -207,30 +202,22 @@ const Navbar = ({ activeId }) => {
             </div>
           ) : (
             <>
-              <div className="login-signup">
-                <Button
-                  type="button"
-                  text="Sign Up"
-                  theme="white"
-                  startIcon={<FaUserPlus />}
-                  onClick={() => handleLoginSignup({ page: 'signup' })}
-                />
+              <div className="login">
                 <Button
                   type="button"
                   text="Login"
                   theme="green"
                   startIcon={<IoLogIn />}
-                  onClick={() => handleLoginSignup({ page: 'login' })}
+                  onClick={handleLogin}
                 />
               </div>
             </>
           )}
         </div>
       </div>
-      {openLoginSignup.open && (
+      {openLogin && (
         <Login
-          page={openLoginSignup.page}
-          setOpen={setOpenLoginSignup}
+          setOpen={setOpenLogin}
           setUser={setUser}
         />
       )}
