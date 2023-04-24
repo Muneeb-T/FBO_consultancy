@@ -1,7 +1,7 @@
 import Joi from 'joi';
 
 const schemas = {
-  signup: Joi.object().keys({
+  register: Joi.object().keys({
     email: Joi.string().email().required().label('Email'),
     password: Joi.string().required().min(8).label('Password'),
     confirmPassword: Joi.string()
