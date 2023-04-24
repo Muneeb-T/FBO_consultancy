@@ -17,6 +17,10 @@ const navLinksData = [
   { id: 1, text: 'Renewals', isActive: false },
   { id: 2, text: 'About us', isActive: false },
 ];
+const dbStorageInitialState = {
+  usedStorage: (0).toFixed(2),
+  totalStorage: (0).toFixed(2),
+};
 const Navbar = ({ activeId }) => {
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem('user') || null) || null,
@@ -24,20 +28,20 @@ const Navbar = ({ activeId }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [openLogin, setOpenLogin] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [dataBaseStorage, setDatabaseStorage] = useState({
-    usedStorage: (0).toFixed(2),
-    totalStorage: (0).toFixed(2),
-  });
+  const [dataBaseStorage, setDatabaseStorage] = useState(dbStorageInitialState);
 
   const getDatabaseStorage = async () => {
     try {
-      setLoading(true);
-      const { data } = await API.get('/database/storage');
-      const { success, storage, message } = data;
-      if (!success) {
-        throw { message: message || 'Something went wrong' };
+      if (user) {
+        setLoading(true);
+        const { data } = await API.get('/database/storage');
+        const { success, storage, message } = data;
+        if (!success) {
+          throw { message: message || 'Something went wrong' };
+        }
+        return setDatabaseStorage(storage);
       }
-      setDatabaseStorage(storage);
+      setDatabaseStorage(dbStorageInitialState);
     } catch (error) {
       console.log(error);
       const message =
@@ -62,7 +66,7 @@ const Navbar = ({ activeId }) => {
 
   useEffect(() => {
     getDatabaseStorage();
-  }, []);
+  }, [user]);
 
   const handleSearchQuery = (e) => {
     const { value } = e.target;
@@ -89,6 +93,7 @@ const Navbar = ({ activeId }) => {
         throw { message };
       }
       setUser(null);
+
       localStorage.removeItem('user');
 
       toast.success(message, {

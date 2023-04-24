@@ -18,6 +18,7 @@ const userSchema = new Schema({
       values: ['admin', 'employee'],
       message: 'Role should be either "admin" or "employee".',
     },
+    default: 'employee',
   },
   accessToken: {
     type: String,

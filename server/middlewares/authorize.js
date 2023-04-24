@@ -1,7 +1,7 @@
 const authorize = (roles = []) => {
   return async (req, res, next) => {
     try {
-      const { role } = req?.user;
+      const { role } = req.user || {};
       if (!role) {
         return res.status(400).json({
           success: false,

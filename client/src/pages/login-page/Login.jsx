@@ -11,6 +11,7 @@ import { BiEnvelope, BiLock } from 'react-icons/bi';
 import API from '../../api';
 import Loader from '../../components/loader/Loader';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -28,6 +29,7 @@ const loginInitialValues = {
 const Login = ({ open, setOpen, setUser }) => {
   const initialValues = loginInitialValues;
   const validationSchema = LoginSchema;
+  const navigate = useNavigate();
 
   const [fade, setFade] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -45,8 +47,13 @@ const Login = ({ open, setOpen, setUser }) => {
       setLoading(true);
       const url = '/auth/login';
       const { data } = await API.post(url, values);
-      setUser(data.user);
+      const { user } = data;
+      const { role } = user;
+      setUser(user);
       localStorage.setItem('user', JSON.stringify(data.user));
+      if (role === 'admin') {
+        navigate('/admin');
+      }
       toast.success(data.message, {
         position: 'bottom-center',
         className: 'success-toast',
