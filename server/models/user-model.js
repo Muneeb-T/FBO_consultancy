@@ -4,12 +4,20 @@ const { Schema, model } = mongoose;
 const userSchema = new Schema({
   email: {
     type: String,
-    unique: [true,'User already exists.'],
+    unique: [true, 'User already exists.'],
     required: [true, 'Email address is required.'],
   },
   password: {
     type: String,
     required: [true, 'Password is required.'],
+  },
+  role: {
+    type: String,
+    required: [true, 'Role is required.'],
+    enum: {
+      values: ['admin', 'employee'],
+      message: 'Role should be either "admin" or "employee".',
+    },
   },
   accessToken: {
     type: String,

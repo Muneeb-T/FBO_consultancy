@@ -24,7 +24,11 @@ const login = async (req, res) => {
     res.cookie('access-token', user.accessToken);
     res.cookie('refresh-token', user.refreshToken);
 
-    user = { _id: user._id, email };
+    user = {
+      _id: user._id,
+      email: user.email,
+      role: user.role,
+    };
 
     res
       .status(201)
@@ -63,7 +67,6 @@ const logout = async (req, res) => {
 };
 
 export default {
-  register,
   login,
   logout,
 };

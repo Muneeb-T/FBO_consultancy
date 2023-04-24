@@ -1,25 +1,37 @@
 import userModel from '../models/user-model.js';
 const register = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { user, body } = req;
+    const { email, password } = body;
+
+    if (!user)
+      return res
+        .status(401)
+        .json({ success: false, message: 'Unauthorized access.' });
+
     if (!email || !password)
       return res.status(400).json({ success: false, message: 'Bad request' });
 
-    let user = userModel(req.body);
+    let employee = userModel({
+      ...req.body,
+      role: 'employee',
+    });
 
-    await user.save();
+    await employee.save();
 
-    user = { _id: user._id, email };
+    employee = { _id: employee._id, email };
 
-    res
-      .status(201)
-      .json({ success: true, user, message: 'User signed up successfully.' });
+    res.status(201).json({
+      success: true,
+      employee,
+      message: 'User signed up successfully.',
+    });
   } catch (error) {
     if (error?.code === 11000) {
       console.log(error);
       return res
         .status(409)
-        .json({ success: false, message: 'User already exists.' });
+        .json({ success: false, message: 'Employee already exists.' });
     }
 
     if (error.name === 'ValidationError') {
