@@ -7,8 +7,6 @@ const router = express.Router();
 
 router.get(
   '/storage',
-  verifyJwtToken,
-  authorize(['admin', 'employee']),
   dbControllers.getStorageUsed,
 );
 
