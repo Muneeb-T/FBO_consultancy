@@ -12,6 +12,7 @@ import API from '../../api';
 import { toast } from 'react-toastify';
 import Loader from '../loader/Loader';
 import Paper from '../paper/Paper';
+import { useNavigate } from 'react-router-dom';
 const navLinksData = [
   { id: 0, text: 'Home', isActive: true },
   { id: 1, text: 'Renewals', isActive: false },
@@ -29,19 +30,17 @@ const Navbar = ({ activeId }) => {
   const [openLogin, setOpenLogin] = useState(false);
   const [loading, setLoading] = useState(false);
   const [dataBaseStorage, setDatabaseStorage] = useState(dbStorageInitialState);
+  const navigate = useNavigate();
 
   const getDatabaseStorage = async () => {
     try {
-      if (user) {
-        setLoading(true);
-        const { data } = await API.get('/database/storage');
-        const { success, storage, message } = data;
-        if (!success) {
-          throw { message: message || 'Something went wrong' };
-        }
-        return setDatabaseStorage(storage);
+      setLoading(true);
+      const { data } = await API.get('/database/storage');
+      const { success, storage, message } = data;
+      if (!success) {
+        throw { message: message || 'Something went wrong' };
       }
-      setDatabaseStorage(dbStorageInitialState);
+      setDatabaseStorage(storage);
     } catch (error) {
       console.log(error);
       const message =
@@ -66,7 +65,7 @@ const Navbar = ({ activeId }) => {
 
   useEffect(() => {
     getDatabaseStorage();
-  }, [user]);
+  }, []);
 
   const handleSearchQuery = (e) => {
     const { value } = e.target;
@@ -88,14 +87,13 @@ const Navbar = ({ activeId }) => {
       setLoading(true);
       const { data } = await API.patch('/auth/logout');
       const { success, message } = data;
-      console.log(data);
       if (!success) {
         throw { message };
       }
       setUser(null);
-
       localStorage.removeItem('user');
-
+      navigate('/');
+      
       toast.success(message, {
         position: 'bottom-center',
         className: 'success-toast',
