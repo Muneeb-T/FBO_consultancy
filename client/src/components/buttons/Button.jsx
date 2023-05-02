@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import './Button.css';
 const Button = ({
+  className,
   text,
   disabled,
   startIcon,
@@ -18,7 +19,7 @@ const Button = ({
         style={{ ...style }}
         onClick={onClick}
         disabled={disabled}
-        className={classNames('button', {
+        className={classNames(`${'button' + ' ' + className}`, {
           'green-text-button': theme === 'green-text',
           'white-button': theme === 'white',
           'green-button': theme === 'green',

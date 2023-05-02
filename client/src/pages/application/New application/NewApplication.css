@@ -1,0 +1,49 @@
+.new-application {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../assets/food background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.new-application .form-header {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.new-application .paper {
+    width: 80%;
+    position: relative;
+    padding-bottom: 60px;
+}
+
+.new-application .form-header p {
+    color: var(--theme-dark-green);
+    font-weight: 600;
+    font-size: x-large;
+}
+
+
+.new-application .application-form .grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.new-application .application-form .grid .col {
+    padding: 20px;
+}
+
+.new-application .application-form .submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+}
+
+textarea {
+    resize: none;
+}

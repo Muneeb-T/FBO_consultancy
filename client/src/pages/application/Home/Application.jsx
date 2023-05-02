@@ -3,21 +3,22 @@ import './Application.css';
 import Paper from '../../../components/paper/Paper';
 import Button from '../../../components/buttons/Button';
 import { IoArrowForward } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
 const applicationTypes = ['New application', 'Renewal', 'File return'];
 
 const Application = () => {
   const [applicationType, setApplicationType] = useState('');
-
+  const navigate = useNavigate();
   const handleApplicationType = (e) => {
     const { value } = e.target;
     setApplicationType(value);
   };
 
   const handleContinue = () => {
-    alert(applicationType);
     if (!applicationType) {
       return false;
     }
+    navigate('new');
   };
 
   return (
@@ -54,33 +55,6 @@ const Application = () => {
             endIcon={<IoArrowForward />}
           />
         </div>
-        {/* <Formik>
-          {(form) => (
-            <Form>
-              <Field
-                as="input"
-                label="Email address"
-                placeholder="Email"
-                type="text"
-                form={form}
-              />
-              <Field
-                label="Password"
-                as="input"
-                type="password"
-                placeholder="Password"
-                form={form}
-              />
-              <Button
-                text="Login"
-                theme="green"
-                type="submit"
-                disabled={loading}
-                style={{ width: '100%' }}
-              />
-            </Form>
-          )}
-        </Formik> */}
       </Paper>
     </div>
   );

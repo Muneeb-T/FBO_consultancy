@@ -8,7 +8,6 @@ import notFoundImage from '../../assets/Not found.png';
 const NotFound = () => {
   return (
     <>
-      <Navbar />
       <div className="not-found">
         <div className='error-details'>
           <p className="error-code">404 - Page not found</p>
