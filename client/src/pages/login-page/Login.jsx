@@ -146,10 +146,6 @@ const Login = ({ open, setOpen, setUser }) => {
                   disabled={loading}
                   style={{ width: '100%' }}
                 />
-
-                <div className="forgot-password">
-                  <p>Forgot password ?</p>
-                </div>
               </Form>
             )}
           </Formik>

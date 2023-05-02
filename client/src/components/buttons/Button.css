@@ -52,3 +52,12 @@
 .green-text-button:hover {
     background-color: var(--theme-lighter-green);
 }
+
+
+.button:disabled {
+    cursor: auto;
+    scale: 100%;
+    border: none;
+    background-color: var(--theme-lighter-gray);
+    color: var(--theme-light-gray);
+}

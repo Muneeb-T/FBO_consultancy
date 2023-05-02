@@ -1,0 +1,80 @@
+.application {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../assets/food background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.application .form-header {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.application .paper {
+    width: 20%;
+    position: relative;
+    padding-bottom: 60px;
+}
+
+.application .form-header p {
+    color: var(--theme-dark-green);
+    font-weight: 600;
+    font-size: x-large;
+}
+
+.application .choose-application-type {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.application .choose-application-type p {
+    font-size: 14px;
+    color: var(--theme-dark);
+    font-weight: 500;
+    text-align: center;
+}
+
+.application .choose-application-type .types {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: max-content;
+}
+
+.application .choose-application-type .types .type {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.application .choose-application-type .types .type input {
+    width: 30px;
+    height: 32px;
+    -webkit-box-shadow: 0px 0px 16px -6px rgba(0, 0, 0, 0.13);
+    -moz-box-shadow: 0px 0px 16px -6px rgba(0, 0, 0, 0.13);
+    box-shadow: 0px 0px 16px -6px rgba(0, 0, 0, 0.13);
+}
+
+
+
+
+
+.application .choose-application-type .types .type label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--theme-light-gray);
+}
+
+.application .choose-application-type .types .type label:hover {
+    cursor: pointer;
+    color: var(--theme-dark-green);
+    transition-duration: 100ms;
+}
