@@ -17,92 +17,88 @@ const NewApplication = () => {
         <Formik>
           {(form) => (
             <Form className="application-form">
-              <div className="grid">
-                <div className="col">
-                  <Field
-                    as="input"
-                    label="Applicant name"
-                    placeholder="Applicant name"
-                    type="text"
-                    form={form}
-                  />
-                  <Field
-                    as="input"
-                    label="Company Address"
-                    placeholder="Company Address"
-                    type="text"
-                    form={form}
-                  />
-                  <Field
-                    as="select"
-                    name="liscenceDuration"
-                    label="Liscence duration (Years)"
-                    placeholder="Liscence duration"
-                    type="number"
-                    form={form}>
-                    <option value={1}>1 year</option>
-                    <option value={3}>3 years</option>
-                    <option value={5}>5 years</option>
-                  </Field>
-                  <Field
-                    as="input"
-                    label="Email address"
-                    placeholder="Email address"
-                    type="text"
-                    form={form}
-                  />
-                </div>
-                <div className="col">
-                  <Field
-                    as="input"
-                    label="Company name"
-                    placeholder="Company name"
-                    type="text"
-                    form={form}
-                  />
+              <div className="inputs feather">
+                <Field
+                  as="input"
+                  label="Applicant name"
+                  placeholder="Applicant name"
+                  type="text"
+                  form={form}
+                />
+                <Field
+                  as="input"
+                  label="Company Address"
+                  placeholder="Company Address"
+                  type="text"
+                  form={form}
+                />
+                <Field
+                  as="select"
+                  name="liscenceDuration"
+                  label="Liscence duration (Years)"
+                  placeholder="Liscence duration"
+                  type="number"
+                  form={form}>
+                  <option value={1}>1 year</option>
+                  <option value={3}>3 years</option>
+                  <option value={5}>5 years</option>
+                </Field>
+                <Field
+                  as="input"
+                  label="Email address"
+                  placeholder="Email address"
+                  type="text"
+                  form={form}
+                />
 
-                  <Field
-                    as="input"
-                    label="Pincode"
-                    placeholder="Pincode"
-                    type="text"
-                    form={form}
-                  />
-                  <Field
-                    as="select"
-                    name="buissnessKind"
-                    label="Buissness kind"
-                    placeholder="Buissness kind"
-                    type="text"
-                    form={form}>
-                    <option value="Partnership">Partnership</option>
-                    <option value="Proprietor">Proprietor</option>
-                    <option value="Corporation">Corporation</option>
-                  </Field>
-                </div>
-                <div className="col">
-                  <Field
-                    as="input"
-                    label="Phone number"
-                    placeholder="Phone number"
-                    type="text"
-                    form={form}
-                  />
-                  <Field
-                    as="input"
-                    label="Door No"
-                    placeholder="Door number"
-                    type="number"
-                    form={form}
-                  />
-                  <Field
-                    as="input"
-                    label="Legislative assembly"
-                    placeholder="Legislative assembly"
-                    type="text"
-                    form={form}
-                  />
-                </div>
+                <Field
+                  as="input"
+                  label="Company name"
+                  placeholder="Company name"
+                  type="text"
+                  form={form}
+                />
+
+                <Field
+                  as="input"
+                  label="Pincode"
+                  placeholder="Pincode"
+                  type="text"
+                  form={form}
+                />
+                <Field
+                  as="select"
+                  name="buissnessKind"
+                  label="Buissness kind"
+                  placeholder="Buissness kind"
+                  type="text"
+                  form={form}>
+                  <option value="Partnership">Partnership</option>
+                  <option value="Proprietor">Proprietor</option>
+                  <option value="Corporation">Corporation</option>
+                </Field>
+
+                <Field
+                  as="input"
+                  label="Phone number"
+                  placeholder="Phone number"
+                  type="text"
+                  form={form}
+                />
+                <Field
+                  as="input"
+                  label="Door No"
+                  placeholder="Door number"
+                  type="number"
+                  form={form}
+                />
+                <Field
+                  as="input"
+                  label="Legislative assembly"
+                  placeholder="Legislative assembly"
+                  type="text"
+                  form={form}
+                />
               </div>
               <div className="submit-button">
                 <Button
