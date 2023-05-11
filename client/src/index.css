@@ -31,6 +31,8 @@
   textarea,
   button {
       font-family: 'Roboto', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale
   }
 
   .text-dark-green {
@@ -42,7 +44,7 @@
   }
 
 
-  .error-toast{
+  .error-toast {
       background-color: var(--theme-red);
       color: var(--theme-white);
   }
@@ -50,4 +52,40 @@
   .success-toast {
       background-color: var(--theme-dark-green);
       color: var(--theme-white);
+  }
+
+
+  input[type="radio"] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: 1px solid var(--theme-light-gray);
+      border-radius: 10px;
+      position: relative;
+      background-color: var(--theme-lighter-gray);
+  }
+
+  input[type="radio"]:hover {
+      cursor: pointer;
+      scale: 90%;
+      transition-duration: 100ms;
+  }
+
+
+  input[type="radio"]::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 70%;
+      height: 70%;
+      border-radius: 5px;
+      transition: transform 0.1s ease-in-out, background-color 0.1s ease-in-out;
+  }
+
+  input[type="radio"]:checked::before {
+      transform: translate(-50%, -50%) scale(1);
+      background-color: var(--theme-dark-green);
   }

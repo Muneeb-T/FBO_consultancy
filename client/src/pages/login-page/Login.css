@@ -12,7 +12,8 @@
 
 .login-page .paper {
     width: 20%;
-    position: relative
+    position: relative;
+    padding-bottom: 60px;
 }
 
 .fade-in {
@@ -49,21 +50,3 @@
     font-weight: 600;
     font-size: x-large;
 }
-
-
-.login-page .forgot-password {
-    font-size: small;
-    text-decoration: underline;
-    color: var(--theme-dark-green);
-    padding: 10px 0;
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-}
-
-.login-page .forgot-password p {
-    cursor: pointer;
-}
-
-

@@ -2,7 +2,16 @@ import React from 'react';
 import './FormField.css';
 import { Field } from 'formik';
 import classNames from 'classnames';
-const FormField = ({ name, type, as, placeholder, label, form, labelIcon }) => {
+const FormField = ({
+  name,
+  type,
+  as,
+  placeholder,
+  label,
+  form,
+  labelIcon,
+  children,
+}) => {
   const { errors, touched } = form;
   const error = errors?.[name] && touched?.[name];
   return (
@@ -20,8 +29,7 @@ const FormField = ({ name, type, as, placeholder, label, form, labelIcon }) => {
           className={classNames('field input-outline', {
             'input-error-outline': error,
           })}
-          placeholder={placeholder}
-        />
+          placeholder={placeholder}>{children}</Field>
       </div>
       {form && error && (
         <div className="error-wrapper">
