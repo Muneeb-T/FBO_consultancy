@@ -10,19 +10,24 @@
     height: 100vh;
 }
 
+
+
 .new-application .form-header {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+
+
 .new-application .paper {
     height: 80vh;
-    width: 90%;
+    width: 90vw;
     position: relative;
 }
 
 .new-application .form-header p {
+    text-align: center;
     color: var(--theme-dark-green);
     font-weight: 600;
     font-size: x-large;
@@ -34,7 +39,7 @@
 }
 
 .new-application .application-form .inputs {
-    margin: 10px 10px;
+    margin: 20px 10px;
     padding: 0 10px;
     height: 100%;
     box-sizing: border-box;
@@ -68,4 +73,25 @@ textarea {
 .new-application .application-form .inputs::-webkit-scrollbar-thumb {
     background-color: var(--theme-dark-green);
     border-radius: 20px;
+}
+
+
+@media (max-width: 576px) {
+
+    .new-application {
+        padding: 15px;
+    }
+
+    .new-application .paper {
+        height: 80vh;
+        width: 95vw;
+    }
+
+    .new-application .form-header p {
+        font-size: large;
+    }
+
+    .new-application .application-form .inputs {
+        margin: 20px 0px;
+    }
 }

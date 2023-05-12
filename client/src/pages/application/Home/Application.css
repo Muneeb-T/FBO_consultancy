@@ -17,8 +17,9 @@
     justify-content: center;
 }
 
+
 .application .paper {
-    width: 20%;
+    width: max-content;
     position: relative;
     padding-bottom: 60px;
 }
@@ -27,7 +28,9 @@
     color: var(--theme-dark-green);
     font-weight: 600;
     font-size: x-large;
+    text-align: center;
 }
+
 
 .application .choose-application-type {
     display: flex;
@@ -77,4 +80,16 @@
     cursor: pointer;
     color: var(--theme-dark-green);
     transition-duration: 100ms;
+}
+
+
+@media (max-width: 576px) { 
+    .application .form-header p {
+        font-size: large;
+    }
+
+    .application .choose-application-type p {
+        font-size: 12px;
+        text-align: center;
+    }
 }
