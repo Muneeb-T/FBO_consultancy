@@ -12,7 +12,8 @@ const NewApplication = () => {
         className="paper"
         shadow>
         <div className="form-header">
-          <p>FBO - Apply for your Liscence</p>
+          <p className="logo">{process.env.REACT_APP_NAME || 'APP'}</p>
+          <p className="text">Apply for your Liscence</p>
         </div>
         <Formik>
           {(form) => (

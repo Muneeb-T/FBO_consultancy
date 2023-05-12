@@ -12,12 +12,6 @@
 
 
 
-.new-application .form-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 
 
 .new-application .paper {
@@ -26,11 +20,18 @@
     position: relative;
 }
 
-.new-application .form-header p {
+.new-application .form-header .logo {
     text-align: center;
     color: var(--theme-dark-green);
     font-weight: 600;
     font-size: x-large;
+}
+
+.new-application .form-header .text {
+    font-size: 14px;
+    color: var(--theme-dark);
+    font-weight: 500;
+    text-align: center;
 }
 
 .new-application .application-form {
@@ -66,7 +67,7 @@ textarea {
 }
 
 .new-application .application-form .inputs::-webkit-scrollbar {
-    width: 5px;
+    width: 3px;
     background-color: var(--theme-white);
 }
 
@@ -87,11 +88,7 @@ textarea {
         width: 95vw;
     }
 
-    .new-application .form-header p {
-        font-size: large;
-    }
-
     .new-application .application-form .inputs {
-        margin: 20px 0px;
+        margin: 10px 0px;
     }
 }
