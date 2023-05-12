@@ -12,7 +12,7 @@ const NewApplication = () => {
         className="paper"
         shadow>
         <div className="form-header">
-          <p>Apply for you Liscence</p>
+          <p>FBO - Apply for your Liscence</p>
         </div>
         <Formik>
           {(form) => (
@@ -27,11 +27,55 @@ const NewApplication = () => {
                 />
                 <Field
                   as="input"
+                  label="Email address"
+                  placeholder="Email address"
+                  type="text"
+                  form={form}
+                />
+                <Field
+                  as="input"
+                  label="Phone number"
+                  placeholder="Phone number"
+                  type="text"
+                  form={form}
+                />
+                <Field
+                  as="input"
+                  label="Company name"
+                  placeholder="Company name"
+                  type="text"
+                  form={form}
+                />
+                <Field
+                  as="input"
+                  label="Door No"
+                  placeholder="Door number"
+                  type="number"
+                  form={form}
+                />
+                <Field
+                  rows={4}
+                  as="textarea"
                   label="Company Address"
                   placeholder="Company Address"
                   type="text"
                   form={form}
                 />
+                <Field
+                  as="input"
+                  label="Legislative assembly"
+                  placeholder="Legislative assembly"
+                  type="text"
+                  form={form}
+                />
+                <Field
+                  as="input"
+                  label="Pincode"
+                  placeholder="Pincode"
+                  type="text"
+                  form={form}
+                />
+
                 <Field
                   as="select"
                   name="liscenceDuration"
@@ -43,29 +87,7 @@ const NewApplication = () => {
                   <option value={3}>3 years</option>
                   <option value={5}>5 years</option>
                 </Field>
-                <Field
-                  as="input"
-                  label="Email address"
-                  placeholder="Email address"
-                  type="text"
-                  form={form}
-                />
 
-                <Field
-                  as="input"
-                  label="Company name"
-                  placeholder="Company name"
-                  type="text"
-                  form={form}
-                />
-
-                <Field
-                  as="input"
-                  label="Pincode"
-                  placeholder="Pincode"
-                  type="text"
-                  form={form}
-                />
                 <Field
                   as="select"
                   name="buissnessKind"
@@ -79,23 +101,10 @@ const NewApplication = () => {
                 </Field>
 
                 <Field
-                  as="input"
-                  label="Phone number"
-                  placeholder="Phone number"
-                  type="text"
-                  form={form}
-                />
-                <Field
-                  as="input"
-                  label="Door No"
-                  placeholder="Door number"
-                  type="number"
-                  form={form}
-                />
-                <Field
-                  as="input"
-                  label="Legislative assembly"
-                  placeholder="Legislative assembly"
+                  rows={5}
+                  as="textarea"
+                  label="Notes"
+                  placeholder="Write your notes here..."
                   type="text"
                   form={form}
                 />
