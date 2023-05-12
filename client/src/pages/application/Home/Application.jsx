@@ -27,7 +27,7 @@ const Application = () => {
         className="paper"
         shadow>
         <div className="form-header">
-          <p>Welcome to FBO</p>
+          <p>Welcome to {process.env.REACT_APP_NAME || 'APP'}</p>
         </div>
         <div className="choose-application-type">
           <p>Choose your application type</p>
